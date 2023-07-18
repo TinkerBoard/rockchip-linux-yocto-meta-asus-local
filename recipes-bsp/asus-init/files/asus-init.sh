@@ -18,8 +18,8 @@ do_set_led_trigger()
 
 do_mount_boot()
 {
-	MMC=$(lsblk | grep "part /" | grep -v "/[a-z]" | awk -F ' ' '{print $1}' | awk -F 'p7' '{print $1}' | awk -F 'mmc' '{print $2}')
-	mount "/dev/mmc${MMC}p6" /boot/
+	MMC=$(lsblk | grep "part /" | grep -v "/[a-z]" | awk -F ' ' '{print $1}' | awk -F 'p8' '{print $1}' | awk -F 'mmc' '{print $2}')
+	mount "/dev/mmc${MMC}p7" /boot/
 }
 
 do_create_xrandr()
