@@ -708,7 +708,7 @@ kill_test(){
 	elif [ $SOC_TYPE == "tegra" ]; then
 		killall glmark2 > /dev/null 2>&1
 	elif [ $SOC_TYPE == "rockchip" ]; then
-		killall glmark2-es2 > /dev/null 2>&1
+		killall glmark2-es2-wayland > /dev/null 2>&1
 	fi 
 	killall memtester > /dev/null 2>&1
 	killall emmc_stress_test.sh > /dev/null 2>&1
@@ -833,12 +833,12 @@ start_sec=$(date +%s)
 log "SN = $sn"
 
 
-CPU="/test/stressapptest -s 864000 --pause_delay 3600 --pause_duration 1 -W --stop_on_errors"
-GPU="glmark2 --benchmark refract --run-forever --off-screen"
+CPU="stressapptest"
+GPU="glmark2-es2-wayland"
 DDR="/test/memtester"
-EMMC="/test/emmc_stress_test.sh"
-SD="/test/sd_card_stress_test.sh"
-Ethernet="/test/$SOC_TYPE/network_stress_test.sh"
+EMMC="emmc_stress"
+SD="sd_card_stress"
+Ethernet="network_stress"
 AEM_Ethernet="/test/$SOC_TYPE/aem_network_stress_test.sh"
 UART_1TO2="/test/serial-test_loop.sh"
 UART1=$COM_1
@@ -849,18 +849,18 @@ MCU_DIO="mcu_dio_stress_test.sh"
 MCU_UART="mcu_uart_stress_test.sh"
 TPU="/test/tpu_stress_test.sh"
 GPS="../GPS_test/gpstest"
-NPU="npu_stress_test.sh"
-RTC="/test/rtc_stress_test.sh"
-EEPROM="/test/eeprom_stress_test.sh"
-MODEM="/test/modem_stress_test.sh"
-SIM="/test/sim_stress_test.sh"
-BLUETOOTH="/test/bluetooth_stress_test.sh"
-WIFI="/test/wifi_stress_test.sh"
-LT9211="/test/lt9211_i2c_test.sh"
-USBCC="/test/cc_i2c_stress_test.sh"
-USBHUB="/test/check_usb_hub.sh"
-AUDIO="/test/audio/audio_loopback_test.sh"
-AUDIOAMP="/test/audio/audio_amplifier_test.sh"
+NPU="npu_stress"
+RTC="rtc_stress"
+EEPROM="eeprom_stress"
+MODEM="modem_stress"
+SIM="sim_stress"
+BLUETOOTH="bluetooth_stress"
+WIFI="wifi_stress"
+LT9211="lt9211_i2c"
+USBCC="cc_i2c_stress"
+USBHUB="check_usb_hub"
+AUDIO="audio_loopback"
+AUDIOAMP="audio_amplifier"
 
 if [ "$DO_THERMAL_LOGGING" == "Y" ]; then
 	thermal_logging > /dev/null 2>&1 &
