@@ -32,5 +32,17 @@ do_asus_post_rootfs_debug() {
 			echo "Installing overlay: ${overlay}..."
 			rsync -av --chmod=u=rwX,go=rX "${overlay}/" "${IMAGE_ROOTFS}"
 		done
+
+		if [ -e ${IMAGE_ROOTFS}/home/root/Test_tool_${RK_PROJECT_NAME} ]; then
+        		mv ${IMAGE_ROOTFS}/home/root/Test_tool_${RK_PROJECT_NAME} ${IMAGE_ROOTFS}/home/root/Test_tool 
+		fi
+
+		if [ -z $(find "${IMAGE_ROOTFS}/home/root/" -name "Test_tool_*") ]; then
+			echo "No other project Test tool"
+		else
+                        echo "Remove other project Test tool"
+			rm -rf ${IMAGE_ROOTFS}/home/root/Test_tool_*
+                fi
+
 	fi
 }

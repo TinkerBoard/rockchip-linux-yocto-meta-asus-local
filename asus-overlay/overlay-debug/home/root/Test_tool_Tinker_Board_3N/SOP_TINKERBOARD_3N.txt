@@ -1,4 +1,4 @@
-## BurnIn Test Tool SOP for TINKERBOARD_3N##
+### BurnIn Test Tool SOP for TINKERBOARD_3N ###
 1. ./BurnIn_TINKERBOARD_3N.sh
 2. Enter test case number, and start test
 
