@@ -4,7 +4,7 @@ PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
 
 case "$1" in
 	start)
-		echo -n "Starting LTE init"
+		echo "Starting LTE init"
 		/etc/modem/mm_cli start &
 		if asus_cmcli keepalive status; then
 			/etc/mm/mm_keepalive run &
@@ -12,8 +12,9 @@ case "$1" in
 		echo "."
 		;;
 	stop)
-		echo -n "Stoping LTE init"
+		echo "Stoping LTE init"
 		/etc/modem/mm_cli stop &
+		/etc/mm/mm_keepalive stop &
 		echo "."
 		;;
 	restart|reload)

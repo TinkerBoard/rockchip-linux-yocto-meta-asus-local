@@ -16,7 +16,7 @@ do_install() {
 inherit update-rc.d
 
 INITSCRIPT_NAME = "lte-init.sh"
-INITSCRIPT_PARAMS = "start 50 2 3 4 5 . stop 20 0 1 6 ."
+INITSCRIPT_PARAMS = "stop 20 0 6 ."
 
 FILES:${PN} = " \
 	${sysconfdir}/init.d \
