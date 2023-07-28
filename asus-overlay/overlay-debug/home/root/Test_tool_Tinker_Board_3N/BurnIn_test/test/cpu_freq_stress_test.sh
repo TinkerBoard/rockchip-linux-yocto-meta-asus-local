@@ -3,7 +3,7 @@ echo "test will run $1 seconds"
 
 while [ 1!=2 ]
 do
-	Flag=$(ps aux | grep "stressapp" | grep -v "grep")
+	Flag=$(ps | grep "stressapp" | grep -v "grep")
 
 	echo "stresstestapp status:$Flag"
 	if [ "$Flag" == "" ]

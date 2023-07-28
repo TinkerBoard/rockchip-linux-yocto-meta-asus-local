@@ -410,7 +410,7 @@ thermal_logging()
 
 get_device_info()
 {
-	cpu_usage=$(top -b -n2 -d0.1 | grep "Cpu(s)" | awk '{print $2+$4+$6+$14 "%"}' | tail -n1)
+	cpu_usage=$(top -b -n2 -d0.1 | grep "CPU" | grep "usr" | awk '{print $2+$4+$6+$14 "%"}' | tail -n1)
 
 	cpu_temp=$(cat $CMD_CPU_TEMP)
 	cpu_temp=`awk 'BEGIN{printf "%.2f\n",('$cpu_temp'/1000)}'`
